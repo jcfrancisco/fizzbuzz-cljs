@@ -1,4 +1,4 @@
-cljs-fizzbuzz
+fizzbuzz-cljs
 =============
 
 FizzBuzz written in ClojureScript.
