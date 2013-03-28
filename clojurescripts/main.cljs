@@ -4,17 +4,25 @@
   (fizzbuzz-inc 1)))
 
 (defn fizzbuzz-inc [n]
+  (clear)
   (-> (js/$ "#number")
       (.text n))
-  (js/setTimeout fizzbuzz-inc "1000" (inc n)))
+  (if (= (rem n 3) 0) (fizz))
+  (if (= (rem n 5) 0) (buzz))
+  (js/setTimeout fizzbuzz-inc "200" (inc n)))
 
-(def $fizzbuzz (js/$ "#fizzbuzz"))
+(def $fizz (js/$ "#fizz"))
+(def $buzz (js/$ "#buzz"))
 
 (defn fizz []
-  (-> $fizzbuzz (.text "fizz")))
+  (-> $fizz (.show)))
 
 (defn buzz []
-  (-> $fizzbuzz (.text "buzz")))
+  (-> $buzz (.show)))
 
 (defn fizzbuzz []
-  (-> $fizzbuzz (.text "fizzbuzz")))
+  (fizz) (buzz))
+
+(defn clear []
+  (-> $fizz (.hide))
+  (-> $buzz (.hide)))

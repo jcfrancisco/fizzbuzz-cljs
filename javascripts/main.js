@@ -21086,16 +21086,31 @@ $(function() {
   return hello_cljs.main.fizzbuzz_inc.call(null, 1)
 });
 hello_cljs.main.fizzbuzz_inc = function fizzbuzz_inc(n) {
+  hello_cljs.main.clear.call(null);
   $("#number").text(n);
-  return setTimeout(fizzbuzz_inc, "1000", n + 1)
+  if(cljs.core._EQ_.call(null, cljs.core.rem.call(null, n, 3), 0)) {
+    hello_cljs.main.fizz.call(null)
+  }else {
+  }
+  if(cljs.core._EQ_.call(null, cljs.core.rem.call(null, n, 5), 0)) {
+    hello_cljs.main.buzz.call(null)
+  }else {
+  }
+  return setTimeout(fizzbuzz_inc, "200", n + 1)
 };
-hello_cljs.main.$fizzbuzz = $("#fizzbuzz");
+hello_cljs.main.$fizz = $("#fizz");
+hello_cljs.main.$buzz = $("#buzz");
 hello_cljs.main.fizz = function fizz() {
-  return hello_cljs.main.$fizzbuzz.text("fizz")
+  return hello_cljs.main.$fizz.show()
 };
 hello_cljs.main.buzz = function buzz() {
-  return hello_cljs.main.$fizzbuzz.text("buzz")
+  return hello_cljs.main.$buzz.show()
 };
 hello_cljs.main.fizzbuzz = function fizzbuzz() {
-  return hello_cljs.main.$fizzbuzz.text("fizzbuzz")
+  hello_cljs.main.fizz.call(null);
+  return hello_cljs.main.buzz.call(null)
+};
+hello_cljs.main.clear = function clear() {
+  hello_cljs.main.$fizz.hide();
+  return hello_cljs.main.$buzz.hide()
 };
