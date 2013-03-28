@@ -21082,4 +21082,20 @@ cljs.core.UUID.prototype.toString = function() {
 };
 goog.provide("hello_cljs.main");
 goog.require("cljs.core");
-alert("Hello from ClojureScript.");
+$(function() {
+  return hello_cljs.main.fizzbuzz_inc.call(null, 1)
+});
+hello_cljs.main.fizzbuzz_inc = function fizzbuzz_inc(n) {
+  $("#number").text(n);
+  return setTimeout(fizzbuzz_inc, "1000", n + 1)
+};
+hello_cljs.main.$fizzbuzz = $("#fizzbuzz");
+hello_cljs.main.fizz = function fizz() {
+  return hello_cljs.main.$fizzbuzz.text("fizz")
+};
+hello_cljs.main.buzz = function buzz() {
+  return hello_cljs.main.$fizzbuzz.text("buzz")
+};
+hello_cljs.main.fizzbuzz = function fizzbuzz() {
+  return hello_cljs.main.$fizzbuzz.text("fizzbuzz")
+};
